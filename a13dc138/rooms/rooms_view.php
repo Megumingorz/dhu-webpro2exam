@@ -7,7 +7,7 @@ class RoomsView{
         $this->model = $model;
     }
     function render(){
-        $rooms = $this->model->all();
+        $rooms = $this->model->getAll();
         include_once('rooms_htdoc.php');
     }
 }
