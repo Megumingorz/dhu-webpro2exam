@@ -1,28 +1,27 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <title>WEBプログラミング演習2最終課題</title>
-</head>
-<body>
+<?php
+include_once('messages_view.php');
+include_once('messages.php');
+include('../rooms/rooms.php');
 
-<p><a href="./">ルーム一覧</a></p>
+class MessagesController{
+    private $model;
+    private $view;
+    private $room_id;
+    private $room_name;
 
-<h1>【ルームの名前】</h1>
-<p>【ルームの名前】</p>
-
-<ul>
-    <li>
-        <ul>
-            <li>【コメント】</li>
-            <li>【時間】</li>
-        </ul>
-    </li>
-</ul>
-<form action="record.php" method="post">
-    <input type="text" name="comment">
-    <button type="submit">送信</button>
-</form>
-
-</body>
-</html>
+    function __construct($room_id){
+        $rooms = new Rooms();
+        $rooms->setData();
+        $this->room_id = $room_id;
+        $this->room_name = $rooms->getName($this->room_id);
+        $this->model = new Messages($this->room_id);
+        $this->view = new MessagesView($this->model, $this->room_name);
+    }
+    function index(){
+        $this->model->setData();
+        $this->view->render();
+    }
+}
+$room_id = $_GET['id'];
+$controller = new MessagesController($room_id);
+$controller->index();
