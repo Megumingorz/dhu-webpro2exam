@@ -8,6 +8,6 @@ class RoomsView{
     }
     function render(){
         $rooms = $this->model->getAll();
-        include_once('rooms_htdoc.php');
+        include_once('../template/rooms.php');
     }
 }

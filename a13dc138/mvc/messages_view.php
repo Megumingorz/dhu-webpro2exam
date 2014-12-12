@@ -10,6 +10,6 @@ class MessagesView{
     }
     function render(){
         $data = $this->model->getAll();
-        include_once('messages_htdocs.php');
+        include_once('../template/messages.php');
     }
 }

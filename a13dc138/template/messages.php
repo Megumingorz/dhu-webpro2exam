@@ -21,7 +21,7 @@
         </ul>
     </li>
 </ul>
-<form action="record.php" method="post">
+<form action='record.php' method="post">
     <input type="text" name="comment">
     <button type="submit">送信</button>
 </form>
