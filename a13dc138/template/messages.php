@@ -22,6 +22,9 @@
         </ul>
     </li>
 </ul>
+<?php } else { ?>
+<p>メッセージはありません</p>
+<?php } ?>
 <form action='record.php' method="post">
     <input type="text" name="comment">
     <input type="hidden" name="room_id" value="<?php echo $room_id ?>">
