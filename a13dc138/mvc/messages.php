@@ -1,12 +1,17 @@
 <?php
 
 class Messages{
-    private $room_id;
     private $data;
+    private $room_id;
 
     function __construct($room_id){
-        $this->room_id = $room_id;
+        if(isset($room_id)){
+            $this->room_id = $room_id;
+        } else {
+            echo 'No $room_id';
+        }
     }
+
     function setData(){
         try {
             $pdo = new PDO(
@@ -31,5 +36,18 @@ class Messages{
     }
     function getAll(){
         return $this->data;
+    }
+    function saveMessage($message){
+        try {
+            $pdo = new PDO(
+                    'mysql:host=localhost;dbname=webpro2examdb;charset=utf8;',
+                    'root',
+                    'root'
+                );
+            $pdo->query("INSERT INTO messages VALUES (null, $this->room_id, now(), '$message');");
+        } catch (PDOException $e) {
+            var_dump($e->getMessage());
+            exit();
+        }
     }
 }

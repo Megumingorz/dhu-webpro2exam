@@ -8,8 +8,8 @@
 
 <p><a href="../rooms/">ルーム一覧</a></p>
 
-<h1><?php echo $this->room_name ?></h1>
-<p><?php echo $this->room_name ?>のメッセージ一覧です。</p>
+<h1><?php echo $room_name ?></h1>
+<p><?php echo $room_name ?>のメッセージ一覧です。</p>
 
 <ul>
     <li>
@@ -23,6 +23,7 @@
 </ul>
 <form action='record.php' method="post">
     <input type="text" name="comment">
+    <input type="hidden" name="room_id" value="<?php echo $room_id ?>">
     <button type="submit">送信</button>
 </form>
 
