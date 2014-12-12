@@ -25,7 +25,8 @@ class Messages{
             }
             $this->data = $result;
         } catch (PDOException $e) {
-            die($e->getMassage());
+            var_dump($e->getMessage());
+            exit();
         }
     }
     function getAll(){
