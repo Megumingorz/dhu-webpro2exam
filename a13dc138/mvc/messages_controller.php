@@ -24,7 +24,7 @@ class MessagesController{
         $this->model->setData();
         $this->view->render($this->room_id, $this->room_name);
     }
-    function saveMassage($message){
+    function create($message){
         $this->model->saveMessage($message);
     }
 }
