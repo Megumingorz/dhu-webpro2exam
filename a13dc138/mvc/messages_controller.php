@@ -1,7 +1,7 @@
 <?php
 include_once('messages_view.php');
 include_once('messages.php');
-include('rooms.php');
+include_once('rooms.php');
 
 class MessagesController{
     private $model;

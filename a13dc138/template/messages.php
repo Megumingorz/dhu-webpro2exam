@@ -15,10 +15,10 @@
 <ul>
     <li>
         <ul>
-<?php foreach ($data as $d): ?>
+<?php foreach ($data as $d) { ?>
             <li><?php echo $d['content'] ?></li>
             <li><?php echo $d['sent_at'] ?></li>
-<?php endforeach; ?>
+<?php } ?>
         </ul>
     </li>
 </ul>
