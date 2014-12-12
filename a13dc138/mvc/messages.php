@@ -28,7 +28,7 @@ class Messages{
                     'content' => $row['content']
                 );
             }
-            $this->data = $result;
+            $this->data = (empty($result)) ? null : $result ;
         } catch (PDOException $e) {
             var_dump($e->getMessage());
             exit();

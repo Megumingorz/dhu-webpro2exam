@@ -11,6 +11,7 @@
 <h1><?php echo $room_name ?></h1>
 <p><?php echo $room_name ?>のメッセージ一覧です。</p>
 
+<?php if (isset($data)){ ?>
 <ul>
     <li>
         <ul>
