@@ -21,11 +21,10 @@ class Rooms{
             exit();
         }
     }
-
     function getAll(){
         return $this->data;
     }
     function getName($room_id){
-        return $this->data[$room_id];
+        return (empty($this->data[$room_id])) ? false : $this->data[$room_id] ;
     }
 }

@@ -1,3 +1,4 @@
+<?php include_once('util.php'); ?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -13,7 +14,7 @@
 
 <ul>
 <?php foreach ($rooms as $id => $name):?>
-    <li><a href="../messages/?id=<?php echo $id ?>"><?php echo $name ?></a></li>
+    <li><a href="../messages/?id=<?php h($id); ?>"><?php echo $name ?></a></li>
 <?php endforeach; ?>
 </ul>
 

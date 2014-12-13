@@ -5,11 +5,7 @@ class Messages{
     private $room_id;
 
     function __construct($room_id){
-        if(isset($room_id)){
-            $this->room_id = $room_id;
-        } else {
-            echo 'No $room_id';
-        }
+        $this->room_id = $room_id;
     }
 
     function setData(){
@@ -19,7 +15,8 @@ class Messages{
                     'root',
                     'root'
                 );
-            $rs = $pdo->query("SELECT * FROM messages WHERE room_id=$this->room_id");
+            $rs = $pdo->prepare("SELECT * FROM messages WHERE room_id=?");
+            $rs->execute(array($this->room_id));
             $result = array();
             while($row = $rs->fetch(PDO::FETCH_ASSOC)){
                 // $time = strtotime($row['sent_at']);
@@ -28,7 +25,7 @@ class Messages{
                     'content' => $row['content']
                 );
             }
-            $this->data = (empty($result)) ? null : $result ;
+            $this->data = (empty($result)) ? false : $result ;
         } catch (PDOException $e) {
             var_dump($e->getMessage());
             exit();

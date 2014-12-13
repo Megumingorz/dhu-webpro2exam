@@ -1,3 +1,4 @@
+<?php include_once('util.php'); ?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -8,28 +9,32 @@
 
 <p><a href="../rooms/">ルーム一覧</a></p>
 
-<h1><?php echo $room_name ?></h1>
-<p><?php echo $room_name ?>のメッセージ一覧です。</p>
+<?php if ($room_name): // $room_name==true ?>
+<h1><?php h($room_name); ?></h1>
+<p><?php h($room_name); ?>のメッセージ一覧です。</p>
 
-<?php if (isset($data)){ ?>
+<?php if ($data): // $data=true ?>
 <ul>
     <li>
         <ul>
-<?php foreach ($data as $d) { ?>
-            <li><?php echo $d['content'] ?></li>
-            <li><?php echo $d['sent_at'] ?></li>
-<?php } ?>
+<?php foreach ($data as $d) : ?>
+            <li><?php h($d['content']); ?></li>
+            <li><?php h($d['sent_at']); ?></li>
+<?php endforeach; ?>
         </ul>
     </li>
 </ul>
-<?php } else { ?>
+<?php else: // $data==false ?>
 <p>メッセージはありません</p>
-<?php } ?>
+<?php endif; // data ?>
 <form action='record.php' method="post">
     <input type="text" name="comment">
-    <input type="hidden" name="room_id" value="<?php echo $room_id ?>">
+    <input type="hidden" name="room_id" value="<?php h($room_id); ?>">
     <button type="submit">送信</button>
 </form>
+<?php else: // $room_name==false ?>
+<p>ルームが見つかりません</p>
+<?php endif; // $room_name ?>
 
 </body>
 </html>
