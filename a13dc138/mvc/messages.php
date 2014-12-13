@@ -41,7 +41,8 @@ class Messages{
                     'root',
                     'root'
                 );
-            $pdo->query("INSERT INTO messages VALUES (null, $this->room_id, now(), '$message');");
+            $rs = $pdo->prepare("INSERT INTO messages VALUES (null, ?, now(), ?)");
+            $rs->execute(array($this->room_id, $message));
         } catch (PDOException $e) {
             var_dump($e->getMessage());
             exit();
