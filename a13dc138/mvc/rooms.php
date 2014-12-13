@@ -15,7 +15,7 @@ class Rooms{
             while($row = $rs->fetch(PDO::FETCH_ASSOC)){
                 $result[$row['id']] = $row['name'];
             }
-            $this->data = $result;
+            $this->data = (empty($result)) ? false : $result ;
         } catch (PDOException $e) {
             var_dump($e->getMessage());
             exit();

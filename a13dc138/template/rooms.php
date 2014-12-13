@@ -12,11 +12,15 @@
 <h1>ルーム一覧</h1>
 <p>発言したいルームを選択して下さい。</p>
 
+<?php if ($rooms): //$rooms==true ?>
 <ul>
 <?php foreach ($rooms as $id => $name):?>
     <li><a href="../messages/?id=<?php h($id); ?>"><?php echo $name ?></a></li>
 <?php endforeach; ?>
 </ul>
+<?php else: ?>
+<p>ルームはありません</p>
+<?php endif; ?>
 
 </body>
 </html>
