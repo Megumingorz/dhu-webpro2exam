@@ -1,4 +1,9 @@
-<?php include_once('util.php'); ?>
+<?php
+include_once('util.php');
+session_start();
+$token = session_id();
+$_SESSION['token'] = $token;
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -30,6 +35,7 @@
 <form action='record.php' method="post">
     <input type="text" name="comment">
     <input type="hidden" name="room_id" value="<?php h($room_id); ?>">
+    <input type="hidden" name="token" value="<?php echo $token; ?>">
     <button type="submit">送信</button>
 </form>
 <?php else: // $room_name==false ?>
